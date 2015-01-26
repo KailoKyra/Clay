@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/gfx">
+        <file alias="clayIcon">gfx/clayComputer.jpg</file>
+    </qresource>
+</RCC>

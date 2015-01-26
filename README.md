@@ -3,6 +3,8 @@ Clay
 
 A Z80-based computer.
 
+The emulator uses the Z80 emulation library from : https://github.com/ggambetta/libz80
+
 Hardware
 ====
 

@@ -2,3 +2,14 @@
 *.o
 *.pro.user
 *.PDF
+*.a
+*.pro.user
+emulator/lib/libz80
+emulator/core/lib/libz80
+emulator/gui/gui.mk
+emulator/gui/qrc_res.cpp
+emulator/gui/ui_MainWindow.h
+emulator/libz80
+emulator/core/libclayCore.a
+emulator/build
+emulator/gui/moc_MainWindow.cpp
