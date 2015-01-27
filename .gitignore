@@ -4,6 +4,7 @@
 *.PDF
 *.a
 *.pro.user
+emulator/claymulator
 emulator/lib/libz80
 emulator/core/lib/libz80
 emulator/gui/gui.mk
