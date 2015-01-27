@@ -26,7 +26,7 @@ typedef struct      s_clay
 
 extern t_clay       g_clay;         // Declared in clay.c
 
-void        update_clay(t_clay *clay, double deltaTime);
+void        update_clay(t_clay *clay);
 
 #ifdef  __cplusplus
 extern "C" {

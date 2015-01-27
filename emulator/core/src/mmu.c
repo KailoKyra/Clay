@@ -9,7 +9,7 @@
 
 static void     init_rom(byte *rom, const char *rom_filename);
 
-void        init_mmu(t_mmu *mmu, const char *rom_path)
+void        mmu_init(t_mmu *mmu, const char *rom_path)
 {
     init_rom(mmu->rom, rom_path);
     mmu->address_extender[0] = 0;     // The registers are not set to 0 in the schematics. TODO : Check/fix that.

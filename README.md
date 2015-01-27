@@ -8,7 +8,7 @@ The emulator uses the Z80 emulation library from : https://github.com/ggambetta/
 Hardware
 ====
 
-- Z80 CPU @ 4Mhz
+- Z80 CPU @ 3.6864Mhz
 - 128K SRAM, 32K ROM
 - AY-3-8912 sound chip
 - Intel 8255 for the sound chip, misc control lines and keyboard matrix lines scanning.

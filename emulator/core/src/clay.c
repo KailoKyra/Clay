@@ -12,11 +12,15 @@ void        init_clay(t_clay *clay, const char *rom_path)
     clay->cpu.ioRead    = io_handler_read;
     clay->cpu.ioWrite   = io_handler_write;
 
-    init_mmu(&clay->mmu, rom_path);
+    mmu_init(&clay->mmu, rom_path);
+    z80ctc_init(&clay->ctc);
 }
 
-void        update_clay(t_clay *clay, double deltaTime)
+void        update_clay(t_clay *clay)
 {
-    (void)deltaTime;
-    Z80Execute(&clay->cpu);
+    Z80Execute(&clay->cpu);         // Execute next instruction
+
+    // Update components
+    z80ctc_update(&g_clay.ctc);
+
 }

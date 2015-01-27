@@ -50,7 +50,7 @@ typedef struct      s_mmu
     byte            address_extender[4];        // four 4bits register
 }                   t_mmu;
 
-void        init_mmu(t_mmu *mmu, const char *rom_path);
+void        mmu_init(t_mmu *mmu, const char *rom_path);
 byte        mmu_mem_read(int param, uint16 address);                      // Z80 Memory read callback
 void        mmu_mem_write(int param, uint16 address, byte data);          // Z80 Memory write callback
 

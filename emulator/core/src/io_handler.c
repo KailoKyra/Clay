@@ -18,7 +18,7 @@ byte                io_handler_read(int param, ushort address)
       //return (sio_read(&sio, address));
       break;
     case CTC:
-      return 0; //CTC stuff
+      return (z80ctc_read(&g_clay.ctc, ((address & 0x02) | (address & 0x01))));
       break;
     case PIO:
       //return (Read8255(&pio, address & 0x03)); //PIO A0/A1
@@ -42,13 +42,16 @@ void                io_handler_write(int param, ushort address, byte data)
 
   switch(periph)
     {
-  case MMU:
+  case MMU:                                                 // 0x00 - 0x0F
       g_clay.mmu.address_extender[(data & 0x30) >> 4] = data & ~0xF0;
       break;
-  case SIO:
+  case SIO:                                                 // 0x10 - 0x1F
       //sio_write(&sio, address, data);
       break;
-  case PIO:
+  case CTC:                                                 // 0x20 - 0X2F
+      z80ctc_write(&g_clay.ctc, ((address & 0x02) | (address & 0x01)), data);
+      break;
+  case PIO:                                                 // 0x30 - 0x3F
       //Write8255(&pio, address & 0x03, data);
       break;
   case DEBUG:

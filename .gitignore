@@ -13,3 +13,4 @@ emulator/libz80
 emulator/core/libclayCore.a
 emulator/build
 emulator/gui/moc_MainWindow.cpp
+emulator/gui/Makefile
