@@ -6,9 +6,10 @@ CTC_chan_3_int:
 	;; Keep track of an interrupt nb (1 to x ?)
 	;; Update the system timer
 	;; Reminder : we should limit the update of some procedures like the keyboard matrix to less than 300 times/sec. 30/sec should be more than enough
-	call kernel_kb_scan		;; Update the keyboard matrix
+        ;call kernel_kb_scan		;; Update the keyboard matrix
+        call print_sentence
 	;; Should I provide some space if the user want to update their own routine ?
-	ex AF, AF'
-	exx
+        exx
+        ex AF, AF'
 	ei
-	reti			; Does reti reenable interrupts (ei) ? If not, add it before reti.
+        reti
