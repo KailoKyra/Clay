@@ -18,9 +18,25 @@ void        init_clay(t_clay *clay, const char *rom_path)
 
 void        update_clay(t_clay *clay)
 {
+    unsigned int        tstate_delta = clay->cpu.tstates;
+
     Z80Execute(&clay->cpu);         // Execute next instruction
+    tstate_delta = clay->cpu.tstates - tstate_delta;
 
     // Update components
-    z80ctc_update(&g_clay.ctc);
+    z80ctc_update(&g_clay.ctc, tstate_delta);
+    // update SIO
+    // update PIO
 
+    // Process interrupts if any (and if possible)
+    if (clay->cpu.IFF1)
+    {
+        if (clay->ctc.interrupt_request)
+        {
+            Z80INT(&clay->cpu, clay->ctc.interrupt_channel_vector);
+            z80ctc_ack_interrupt_req(&clay->ctc);
+        }
+        // else if (...)
+        // ;
+    }
 }

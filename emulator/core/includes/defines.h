@@ -3,6 +3,8 @@
 
 # define    MHZ             (1000000)
 # define    CPU_SPEED       (3.6864*MHZ)
+//# define    CPU_SPEED       (1*MHZ)
+
 
 # define    RAM_SIZE        (128*1024)
 # define    ROM_SIZE        (32*1024)

@@ -24,8 +24,8 @@ INCLUDES    +=  -I.				\
 
 DEFINES     =
 
-#COMMONFLAGS = -Wall -Wextra -ggdb3 -pthread -fpic $(INCLUDES)
-COMMONFLAGS = -Wall -Wextra -O3 -pthread -fpic $(INCLUDES)
+COMMONFLAGS = -Wall -Wextra -ggdb3 -pthread -fpic $(INCLUDES)
+#COMMONFLAGS = -Wall -Wextra -O3 -pthread -fpic $(INCLUDES)
 #COMMONFLAGS = -Wall -Wextra -pthread -fpic $(INCLUDES)
 
 CFLAGS = $(DEFINES) $(COMMONFLAGS)

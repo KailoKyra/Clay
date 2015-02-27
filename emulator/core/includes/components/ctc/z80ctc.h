@@ -49,8 +49,7 @@ typedef union
     };
 }                   t_z80ctc_control_word;
 
-
-
+// An idea for the clock input would be to make a "Clock Input" object, with a cycle counter, edges, ect ect. For now, just use CPU clock t-cycle count.
 
 typedef struct      s_z80ctc_channel
 {
@@ -58,16 +57,23 @@ typedef struct      s_z80ctc_channel
     byte                    timer_reg;
     byte                    vector_reg;                 // Only useful with channel 0.
     byte                    counter;
+    unsigned int            prescaler_cycle_counter;
+    byte                    raise_interrupt;            // This goes to 1 when an interrupt have to be raised for that counter.
+    byte                    is_init;                    // In case of reset, the channel must be setup before used.
 }                   t_z80ctc_channel;
 
 typedef struct          s_z80ctc
 {
     t_z80ctc_channel    channel[4];
+    byte                interrupt_request;
+    byte                interrupt_channel_vector;
 }                       t_z80ctc;
 
 void            z80ctc_init(t_z80ctc *self);
 void            z80ctc_write(t_z80ctc *self, byte cs, byte data);           // CS = the two channel_select pins
 byte            z80ctc_read(t_z80ctc *self, byte cs);
-void            z80ctc_update(t_z80ctc *self);
+void            z80ctc_update(t_z80ctc *self, unsigned int system_clock_tstates);
+
+void            z80ctc_ack_interrupt_req(t_z80ctc *self);
 
 #endif

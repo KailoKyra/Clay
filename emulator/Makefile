@@ -9,7 +9,7 @@ clean:
 
 fclean: clean
 	make fclean -C core
-	rm claymulator
+	rm claymulator || true
 
 re: fclean all
 
