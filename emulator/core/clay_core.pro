@@ -16,7 +16,11 @@ SOURCES += \
     src/components/sio/z80sio.c                    \
     src/components/vdp/TMS9918A.c \
     src/mmu.c \
-    src/io_handler.c
+    src/io_handler.c \
+    src/components/pio/intel_8255.c \
+    src/components/sound/ay_3_8912.c \
+    src/components/sound/audio_output.c \
+    src/utils/circular_buffer.c
 
 
 OTHER_FILES += \
@@ -36,7 +40,11 @@ HEADERS += \
     includes/defines.h \
     includes/mmu.h \
     includes/io_handler.h \
-    includes/components/components.h
+    includes/components/components.h \
+    includes/components/pio/intel_8255.h \
+    includes/components/sound/ay_3_8912.h \
+    includes/components/sound/audio_output.h \
+    includes/utils/circular_buffer.h
 
 INCLUDEPATH += .                                        \
                 lib                                     \

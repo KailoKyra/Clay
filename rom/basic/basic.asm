@@ -6,8 +6,8 @@ basic:
 print_sentence:
 	ld	BC, test_message
 	loop:
-		ld	A, (BC)
-	       	out	(DEBUG), A
+                ld	A, (BC)
+             ;  	out	(DEBUG), A
 
 	;		ld	A, (K_KEYBOARD_MATRIX)
 	;		out	(DEBUG), A

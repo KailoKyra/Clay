@@ -16,7 +16,7 @@
  * 0 = MMU
  * 1 = SERIAL
  * 2 = CTC
- * 3 = PIO
+ * 3 = AY
  * 4 = VDP
  * ...
 */
@@ -25,7 +25,7 @@
 # define    MMU             (0x00)
 # define    SIO             (0x10)
 # define    CTC             (0x20)
-# define    PIO             (0x30)
+# define    AY              (0x30)
 # define    VDP             (0x40)
 
 # define    DEBUG           (0x80)      // Here for testing purposes (output data on stdout, input a char with stdin)

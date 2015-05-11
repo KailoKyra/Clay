@@ -7,8 +7,8 @@ interrupts:
 	;; Interrupt mode 1 code (unused)
 	reti
 	;; -------------- INTERRUPTS VECTOR TABLE ---------------------
-include 'interrupts_vector_table.asm'
+include 'kernel/interrupts/interrupts_vector_table.asm'
 	;; Interrupts handlers
-include 'sio_interrupts.asm'	;; SIO
-include 'ctc_interrupts.asm'	;; CTC
+include 'devices/sio/z80sio/sio_interrupts.asm'	;; SIO
+include 'devices/ctc/z80ctc/ctc_interrupts.asm'	;; CTC
 interrupts_end:

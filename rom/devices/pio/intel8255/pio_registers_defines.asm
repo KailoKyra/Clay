@@ -1,4 +1,4 @@
-	;; PIO registers defines
+        ;; PIO registers defines - OUTDATED & NON USED.
 
 	;; Control register (normal mode):
 PIO_NORMAL_CONTROL_MODE:	equ 0x80 ; Mandatory if we use the normal control mode

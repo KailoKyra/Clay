@@ -4,7 +4,9 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui multimedia
+
+QMAKE_CXXFLAGS += -std=c++11
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -14,10 +16,12 @@ TEMPLATE = app
 
 SOURCES += \
     src/main.cpp \
-    src/MainWindow.cpp
+    src/MainWindow.cpp \
+    src/AudioBuffer.cpp
 
 HEADERS  += \
-    includes/MainWindow.h
+    includes/MainWindow.h \
+    src/AudioBuffer.h
 
 FORMS    += \
     src/MainWindow.ui

@@ -19,7 +19,7 @@
 	;; configure peripherals
 	call	SIO_reset
 	call	CTC_reset
- 	call	PIO_reset	; PIO + Sound chip reset (AY-3)
+        call	AY_reset
  	call	VDP_reset
 	;; ##############################################
 	

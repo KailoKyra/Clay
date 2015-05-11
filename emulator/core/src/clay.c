@@ -14,6 +14,9 @@ void        init_clay(t_clay *clay, const char *rom_path)
 
     mmu_init(&clay->mmu, rom_path);
     z80ctc_init(&clay->ctc);
+    ay_3_8912_init(&clay->ay);
+   if (audio_output_init(&clay->audio_out, 44100*2, &clay->ay, (audio_output_sample_callback)ay_3_8912_sample_stereo))  // 2 sec sound buffer
+       fprintf(stderr, "An error occured while initializing the sound sampler.\n");
 }
 
 void        update_clay(t_clay *clay)
@@ -24,9 +27,10 @@ void        update_clay(t_clay *clay)
     tstate_delta = clay->cpu.tstates - tstate_delta;
 
     // Update components
-    z80ctc_update(&g_clay.ctc, tstate_delta);
-    // update SIO
-    // update PIO
+    z80ctc_update(&clay->ctc, tstate_delta);
+    ay_3_8912_update(&clay->ay, tstate_delta);
+    audio_output_update(&clay->audio_out, tstate_delta);
+    // update SIO    
 
     // Process interrupts if any (and if possible)
     if (clay->cpu.IFF1)
@@ -36,7 +40,7 @@ void        update_clay(t_clay *clay)
             Z80INT(&clay->cpu, clay->ctc.interrupt_channel_vector);
             z80ctc_ack_interrupt_req(&clay->ctc);
         }
-        // else if (...)
+        // ellse if (...)
         // ;
     }
 }
