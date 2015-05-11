@@ -2,7 +2,7 @@
 #define DEFINES_H
 
 # define    MHZ             (1000000)
-# define    CPU_SPEED       (3.6864*MHZ)
+# define    CPU_SPEED       (3.6864f*MHZ)
 //# define    CPU_SPEED       (1*MHZ)
 
 

@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QAudioOutput>
 
 namespace Ui {
 class MainWindow;
@@ -19,9 +20,11 @@ private slots:
     void        on_actionExit_triggered();
     void        on_actionReset_triggered();
 
+    void        handleStateChanged(QAudio::State newState);
 
 private:
-    Ui::MainWindow *ui;
+    Ui::MainWindow  *ui;
+    QAudioOutput    *_audio; // class member.
 };
 
 #endif // MAINWINDOW_H

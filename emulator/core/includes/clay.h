@@ -14,13 +14,14 @@ typedef struct      s_clay
     t_mmu               mmu;
 
     t_z80ctc            ctc;
+    t_ay_3_8912         ay;
+    t_audio_output      audio_out;
 
     // video_controller
-    // CTC
     // SIO
-    // PIO
-    // SOUND
     // KB
+    // ext 1
+    // ext 2
     byte             is_running;
 }                   t_clay;
 

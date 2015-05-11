@@ -6,3 +6,6 @@
 #include "components/keyboard/keyboard.h"
 #include "components/sio/z80sio.h"
 #include "components/vdp/TMS9918A.h"
+#include "components/sound/ay_3_8912.h"
+#include "components/sound/audio_output.h"
+

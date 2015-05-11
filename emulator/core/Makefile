@@ -12,7 +12,10 @@ SRC	=						\
 	src/components/ctc/z80ctc.c			\
 	src/components/keyboard/keyboard.c		\
 	src/components/sio/z80sio.c			\
-        src/components/vdp/TMS9918A.c
+        src/components/vdp/TMS9918A.c                   \
+        src/components/sound/ay_3_8912.c                \
+        src/components/sound/audio_output.c             \
+        src/utils/circular_buffer.c
 
 OBJ	= $(SRC:.c=.o)
 

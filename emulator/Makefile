@@ -1,7 +1,7 @@
 all:
 	./core/lib/compile_libz80.sh
 	make -C core
-	`locate qmake|head -n1` -makefile -o gui/gui.mk gui/gui.pro
+	`locate qmake|grep opt|head -n1` -makefile -o gui/gui.mk gui/gui.pro
 	cd gui; make -f gui.mk
 
 clean:

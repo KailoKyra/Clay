@@ -1,4 +1,4 @@
-	;; I8255A PIO
+        ;; I8255A PIO       - OUTDATED & NON USED.
 
 PIO_reset:
 	ld	A, PIO_CONFIG_PORT_A_OUTPUT_PORT_C_OUTPUT

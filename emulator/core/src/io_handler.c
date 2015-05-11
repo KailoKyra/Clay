@@ -18,10 +18,11 @@ byte                io_handler_read(int param, ushort address)
       //return (sio_read(&sio, address));
       break;
     case CTC:
-      return (z80ctc_read(&g_clay.ctc, ((address & 0x02) | (address & 0x01))));
+      return (z80ctc_read(&g_clay.ctc, (address & 0x03)));
       break;
-    case PIO:
-      //return (Read8255(&pio, address & 0x03)); //PIO A0/A1
+    case AY:
+      if (address & 0x01)                       // The AY can be read only if A0 is high.
+          return (ay_3_8912_read(&g_clay.ay));      // The I/O port is not used, so no need to handle portA
       break;
     case VDP:
       return 0; //VDP stuff
@@ -49,10 +50,13 @@ void                io_handler_write(int param, ushort address, byte data)
       //sio_write(&sio, address, data);
       break;
   case CTC:                                                 // 0x20 - 0X2F
-      z80ctc_write(&g_clay.ctc, ((address & 0x02) | (address & 0x01)), data);
+      z80ctc_write(&g_clay.ctc, (address & 0x03), data);                        // address & 0x3 because we use only A0|A1 for the channel/reg select
       break;
-  case PIO:                                                 // 0x30 - 0x3F
-      //Write8255(&pio, address & 0x03, data);
+  case AY:                                                 // 0x30 - 0x3F
+      if (address & 0x01)                           // latch address mode
+          ay_3_8912_latch_address(&g_clay.ay, data);
+      else                                          // Normal write mode
+          ay_3_8912_write(&g_clay.ay, data);
       break;
   case DEBUG:
         write(STDOUT_FILENO, &data, 1);
