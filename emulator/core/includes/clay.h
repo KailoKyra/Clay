@@ -16,8 +16,8 @@ typedef struct      s_clay
     t_z80ctc            ctc;
     t_ay_3_8912         ay;
     t_audio_output      audio_out;
+    t_tms9918a          vdp;
 
-    // video_controller
     // SIO
     // KB
     // ext 1

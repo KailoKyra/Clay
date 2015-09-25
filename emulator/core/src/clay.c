@@ -17,6 +17,7 @@ void        init_clay(t_clay *clay, const char *rom_path)
     ay_3_8912_init(&clay->ay);
    if (audio_output_init(&clay->audio_out, 44100*2, &clay->ay, (audio_output_sample_callback)ay_3_8912_sample_stereo))  // 2 sec sound buffer
        fprintf(stderr, "An error occured while initializing the sound sampler.\n");
+   tms9918a_init(&clay->vdp);
 }
 
 void        update_clay(t_clay *clay)
@@ -30,6 +31,7 @@ void        update_clay(t_clay *clay)
     z80ctc_update(&clay->ctc, tstate_delta);
     ay_3_8912_update(&clay->ay, tstate_delta);
     audio_output_update(&clay->audio_out, tstate_delta);
+    tms9918a_update(&clay->vdp, tstate_delta);
     // update SIO    
 
     // Process interrupts if any (and if possible)
